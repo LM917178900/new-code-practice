@@ -10,28 +10,38 @@ package com.leinovo.codepractice.hub1_10;
 public class Solution17 {
 
     public boolean HasSubtree(TreeNode root1, TreeNode root2) {
-        // 如果都为 null 判断不是子结构
+        // 1.如果都为 null 判断不是子结构
         if (root1 == null || root2 == null) {
             return false;
         }
-        // root2 是root1 子结构的三种情况：左/中/右
-        return isSame(root1, root2) || isSame(root1.left, root2) || isSame(root1.right, root2);
+
+        // 2.匹配当前节点
+        boolean current = root1.val == root2.val && subTree(root1, root2);
+        // 3.匹配左节点
+        boolean left = HasSubtree(root1.left, root2);
+        // 4.匹配右节点
+        boolean right = HasSubtree(root1.right, root2);
+
+        return current || left || right;
     }
 
-    //    首先：判断结构相同必须需要的函数
-    public boolean isSame(TreeNode root1, TreeNode root2) {
-        // 如果当前值为null，判断是子结构
+    public boolean subTree(TreeNode root1, TreeNode root2) {
+        // 1. 被匹配者为空，匹配成功
         if (root2 == null) {
             return true;
         }
-        // 如果跟结构为 null，判断不是子结构
+        // 2.匹配者为空，匹配失败
         if (root1 == null) {
             return false;
         }
-        // 判断是子结构的情况，必须同时满足：字相等，左边是子结构，右边也是子结构？
-        return root1.val == root2.val
-                && isSame(root1.left, root2.left)
-                && isSame(root1.right, root2.right);
-    }
+        // 3.匹配值
+        boolean value = root1.val == root2.val;
+        // 4.匹配左树
+        boolean left = subTree(root1.left, root2.left);
+        // 5.匹配右树
+        boolean right = subTree(root1.right, root2.right);
 
+        return value && left && right;
+
+    }
 }
