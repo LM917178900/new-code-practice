@@ -1,12 +1,10 @@
-package com.leinovo.codepractice.hub1_10;
+package com.leinovo.codepractice.hub1_20;
 
 /**
  * @description: Solution3
  * @author: leiming5
  * @date: 2021/9/24 16:12
  */
-import java.util.ArrayList;
-import java.util.List;
 
 public class Solution3 {
 //    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {

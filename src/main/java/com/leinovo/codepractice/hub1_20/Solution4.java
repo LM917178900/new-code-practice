@@ -1,8 +1,5 @@
-package com.leinovo.codepractice.hub1_10;
+package com.leinovo.codepractice.hub1_20;
 
-
-import javax.swing.tree.TreeNode;
-import java.util.Arrays;
 
 /**
  * @description: Solution4
