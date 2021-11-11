@@ -1,11 +1,75 @@
 package com.leinovo.codepractice.hub1_20;
 
 /**
+ * JZ16 数值的整数次方
+ *
  * @description: Solution16
  * @author: leiming5
  * @date: 2021/10/9 9:02
  */
 public class Solution16 {
+    public static void main(String[] args) {
+        double power = Power(2, -3);
+        System.out.println(power);
+    }
+
+    /**
+     * 实现函数 double Power(double base, int exponent)，求base的exponent次方。
+     * 1.保证base和exponent不同时为0。
+     * 2.不得使用库函数，同时不需要考虑大数问题
+     * 3.有特殊判题，不用考虑小数点后面0的位数。
+     * <p>
+     * 数据范围:
+     * -100<base<100
+     * -100<exponent<100
+     * -104<函数返回的结果<104
+     *
+     * @param base
+     * @param exponent
+     * @return
+     */
+    public static double Power(double base, int exponent) {
+        boolean isNegative = exponent < 0;
+        if (isNegative) {
+            exponent = -exponent;
+        }
+
+        double result = q_power(base, exponent);
+        return isNegative ? 1 / result : result;
+    }
+
+    /**
+     * 偶数 分开计算
+     * 奇数也分开计算
+     */
+    public static double q_power(double b, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        double temp = q_power(b, n / 2);
+        double result = temp * temp;
+
+        if ((n & 1) == 1) {
+            return result * b;
+        }
+        return result;
+    }
+
+
+    public static double PowerBack(double base, int exponent) {
+
+        boolean isNegative = exponent < 0;
+        if (isNegative) {
+            exponent = -exponent;
+        }
+
+        double result = 1;
+        for (int i = 0; i < exponent; i++) {
+            result *= base;
+        }
+        return isNegative ? 1 / result : result;
+    }
+
     public static ListNode Merge(ListNode list1, ListNode list2) {
 
         ListNode result;
