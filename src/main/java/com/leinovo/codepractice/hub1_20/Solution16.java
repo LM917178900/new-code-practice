@@ -1,5 +1,7 @@
 package com.leinovo.codepractice.hub1_20;
 
+import com.leinovo.codepractice.dataStructure.ListNode;
+
 /**
  * JZ16 数值的整数次方
  *

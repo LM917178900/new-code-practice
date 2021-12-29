@@ -1,4 +1,6 @@
-package com.leinovo.codepractice.hub1_20;
+package com.leinovo.codepractice.elseAlgorithm;
+
+import com.leinovo.codepractice.dataStructure.TreeNode;
 
 /**
  * 二叉排序树（Binary Sort Tree），又称二叉查找树（Binary Search Tree），亦称二叉搜索树。

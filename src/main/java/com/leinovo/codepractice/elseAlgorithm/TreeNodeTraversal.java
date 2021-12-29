@@ -1,6 +1,6 @@
-package com.leinovo.codepractice.hub21_40;
+package com.leinovo.codepractice.elseAlgorithm;
 
-import com.leinovo.codepractice.hub1_20.TreeNode;
+import com.leinovo.codepractice.dataStructure.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,4 +1,4 @@
-package com.leinovo.codepractice.hub1_20;
+package com.leinovo.codepractice.dataStructure;
 
 /**
  * http://data.biancheng.net/view/189.html
@@ -33,8 +33,8 @@ public class TreeNode {
      */
     /**
      * 二叉排序树（Binary Sort Tree），又称二叉查找树（Binary Search Tree），亦称二叉搜索树。
-     *  若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。
-     *
+     * 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。
+     * <p>
      * 二叉排序树的操作主要有：
      * 1.查找：递归查找是否存在key。
      * 2.插入：原树中不存在key，插入key返回true，否则返回false。
@@ -42,10 +42,31 @@ public class TreeNode {
      * 4.删除：（1）叶子节点：直接删除，不影响原树。
      * （2）仅仅有左或右子树的节点：节点删除后，将它的左子树或右子树整个移动到删除节点的位置就可以，子承父业。
      * （3）既有左又有右子树的节点：找到须要删除的节点p的直接前驱或者直接后继s，用s来替换节点p，然后再删除节点s。
-     *
      */
     public TreeNode(int val) {
         this.val = val;
+    }
+
+    public Integer getDeepOfTree(Integer deep) {
+        TreeNode root = this;
+        if (root == null) {
+            return deep;
+        }
+
+        deep++;
+        int left = root.left.getDeepOfTree(deep);
+        int right = root.right.getDeepOfTree(deep);
+
+        return left > right ? left : right;
+    }
+
+    public TreeNode deepCopy() {
+
+        TreeNode pRoot = new TreeNode(this.val);
+        pRoot.left = this.left.deepCopy();
+        pRoot.right = this.right.deepCopy();
+
+        return pRoot;
     }
 
 

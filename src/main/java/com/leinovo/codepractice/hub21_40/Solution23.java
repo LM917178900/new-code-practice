@@ -1,6 +1,6 @@
 package com.leinovo.codepractice.hub21_40;
 
-import com.leinovo.codepractice.hub1_20.TreeNode;
+import com.leinovo.codepractice.dataStructure.TreeNode;
 
 import java.util.List;
 

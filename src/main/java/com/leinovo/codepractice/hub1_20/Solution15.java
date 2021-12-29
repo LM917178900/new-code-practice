@@ -1,5 +1,7 @@
 package com.leinovo.codepractice.hub1_20;
 
+import com.leinovo.codepractice.dataStructure.ListNode;
+
 /**
  * JZ15 二进制中1的个数
  *
@@ -49,49 +51,6 @@ public class Solution15 {
         int result = NumberOf1back2(-10);
         System.out.println(result);
     }
-
-    /**
-     * 打印输出 链表
-     *
-     * @param head
-     * @return
-     */
-    public static void printLnNode(ListNode head) {
-
-        ListNode temp = head;
-        while (temp != null) {
-            System.out.println(temp.val);
-            temp = temp.next;
-        }
-    }
-
-    /**
-     * 生成 链表
-     *
-     * @param arr
-     * @return
-     */
-    public static ListNode generateNode(int[] arr) {
-
-        ListNode temp = null;
-        ListNode result = null;
-
-        // 1. 获取当前数据 val
-        // 2. 获取当前节点 node
-        // 3. 绑定上一个节点之间的关系；
-        for (int i = 0; i < arr.length; i++) {
-            if (i == 0) {
-                result = new ListNode(arr[i]);
-                temp = result;
-            } else {
-                ListNode current = new ListNode(arr[i]);
-                temp.next = current;
-                temp = current;
-            }
-        }
-        return result;
-    }
-
     /**
      * 描述
      * 输入一个整数 n ，输出该数32位二进制表示中1的个数。其中负数用补码表示。

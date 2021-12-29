@@ -1,4 +1,4 @@
-package com.leinovo.codepractice.hub1_20;
+package com.leinovo.codepractice.dataStructure;
 
 /**
  * @description: ArrUtil

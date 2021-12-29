@@ -1,6 +1,6 @@
 package com.leinovo.codepractice.hub21_40;
 
-import com.leinovo.codepractice.hub1_20.TreeNode;
+import com.leinovo.codepractice.dataStructure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,10 +27,11 @@ public class Solution22 {
         System.out.println(result.toString());
 
     }
+
     public static ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
 
         ArrayList<Integer> list = new ArrayList<Integer>();
-        if(root==null){
+        if (root == null) {
             return list;
         }
 
@@ -41,15 +42,15 @@ public class Solution22 {
         queue.offer(current);
         //只要队列中还有节点就说明还没遍历完，继续。
         //每次从队列出队，然后将这个节点左右子入队列（FIFO，故能完成广度/层级遍历），再将这个节点记录在list中即可。
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
 
             current = queue.poll();
             list.add(current.val);
 
-            if(current.left !=null){
+            if (current.left != null) {
                 queue.add(current.left);
             }
-            if(current.right!=null){
+            if (current.right != null) {
                 queue.add(current.right);
             }
         }
@@ -66,7 +67,7 @@ public class Solution22 {
         // 2. 获取每层所有节点
         ArrayList<ArrayList<TreeNode>> lists = new ArrayList<>();
         Integer deep = 0;
-        deep = getDeepOfTree(root, deep);
+        deep = root.getDeepOfTree(deep);
 
 
         // 分别获取每层的节点；加入lists中；
@@ -110,15 +111,4 @@ public class Solution22 {
     }
 
 
-    private static Integer getDeepOfTree(TreeNode root, Integer deep) {
-        if (root == null) {
-            return deep;
-        }
-
-        deep++;
-        int left = getDeepOfTree(root.left, deep);
-        int right = getDeepOfTree(root.right, deep);
-
-        return left > right ? left : right;
-    }
 }
