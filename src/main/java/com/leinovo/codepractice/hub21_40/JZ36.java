@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。如下图所示
- * 数据范围：输入二叉树的节点数 0 \le n \le 10000≤n≤1000，二叉树中每个节点的值 0\le val \le 10000≤val≤1000
- * 要求：空间复杂度O(1)O(1)（即在原树上操作），时间复杂度 O(n)O(n)
+ * 数据范围：输入二叉树的节点数 0≤n≤1000，二叉树中每个节点的值 0≤val≤1000
+ * 要求：空间复杂度O(1)（即在原树上操作），时间复杂度 O(n)
  * <p>
  * 注意:
  * 1.要求不能创建任何新的结点，只能调整树中结点指针的指向。当转化完成以后，树中节点的左指针需要指向前驱，树中节点的右指针需要指向后继
@@ -23,8 +23,8 @@ import java.util.List;
 public class JZ36 {
 
     /**
-     * 1. 从根节点开始，将节点展开；
-     * 2. 左树返回右节点，右树返回左节点；
+     * 1. 中序遍历
+     * 2. 调整节点指针
      *
      * @param pRootOfTree
      * @return
@@ -35,24 +35,27 @@ public class JZ36 {
         }
 
         List<TreeNode> list = new ArrayList<>();
-        inTravel(pRootOfTree,list);
+        inTravel(pRootOfTree, list);
 
-        for (int i = 0; i < list.size(); i++) {
-            if(i==0){
-                list.get(i).right = list.get(i+1);
-            }else if(i==list.size()-1){
-                list.get(i).left = list.get(i-1);
-            }else{
-                list.get(i).left = list.get(i-1);
-                list.get(i).right = list.get(i+1);
-            }
+        resetPoint(list);
+
+        return list.get(0);
+    }
+
+    private void resetPoint(List<TreeNode> list) {
+
+        int size = list.size();
+        if (size == 0 || size == 1) {
+            return;
         }
 
-        return pRootOfTree;
+        for (int i = 0; i < size; i++) {
+            list.get(i).left = i == 0 ? null : list.get(i - 1);
+            list.get(i).right = i == size - 1 ? null : list.get(i + 1);
+        }
     }
 
     private void inTravel(TreeNode root, List<TreeNode> list) {
-
         if (root.left != null) {
             inTravel(root.left, list);
         }
@@ -60,7 +63,6 @@ public class JZ36 {
         if (root.right != null) {
             inTravel(root.right, list);
         }
-
     }
 
 
